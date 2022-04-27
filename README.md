@@ -1,12 +1,12 @@
 # lce-lca-st
 Computational Biology project that answers LCE queries using precomputed LCA on suffix tree
 
-## Document - 
+## Document 
 https://docs.google.com/document/d/1kYP4cmGolfmlYXY-Mmiuo4V-qEu0if_GankrrTrebd0/edit 
 
-## Literature Review - 
+## Literature Review
 
-## References -
+## References
 
 ### Suffix Tree:
  - http://brenden.github.io/ukkonen-animation/
