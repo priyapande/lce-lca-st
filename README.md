@@ -9,9 +9,9 @@ https://docs.google.com/document/d/1kYP4cmGolfmlYXY-Mmiuo4V-qEu0if_GankrrTrebd0/
 ## References -
 
 ### Suffix Tree:
-http://brenden.github.io/ukkonen-animation/
-https://www.youtube.com/watch?v=aPRqocoBsFQ
+ - http://brenden.github.io/ukkonen-animation/
+ - https://www.youtube.com/watch?v=aPRqocoBsFQ
 
 ### LCA:
-https://www3.cs.stonybrook.edu/~bender/newpub/BenderFa00-lca.pdf
-https://arxiv.org/pdf/1705.04589.pdf
+- https://www3.cs.stonybrook.edu/~bender/newpub/BenderFa00-lca.pdf
+- https://arxiv.org/pdf/1705.04589.pdf
