@@ -1,5 +1,5 @@
 /*
-    Run: g++ ukk.cpp --std=c++17
+    Run: g++ LCE.cpp --std=c++17
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -366,10 +366,6 @@ public:
         nodeLevelMap[node] = level;
         store[node][0] = parent;
 
-        // se(node);
-        // cout << level << endl;
-        // cout << endl;
-
         for(int i = 1; i <= D; i++) {
             if(store[node][i - 1]) {
                 store[node][i] = store[store[node][i - 1]][i - 1];
@@ -463,6 +459,13 @@ int main() {
 
     st.buildTree();
     st.preprocessLCA();
+
+    // if(st.validateSuffixTree()) {
+    //     cout << input << " - Validated!" << endl;
+    // }
+    // else {
+    //     cout << input << " Validation failed!" << endl;
+    // }
     
     int Q; cin >> Q;
 
@@ -474,13 +477,6 @@ int main() {
 
         cout << st.LCE(u, v) << endl;
     }
-
-    // if(st.validateSuffixTree()) {
-    //     cout << input << " - Validated!" << endl;
-    // }
-    // else {
-    //     cout << input << " Validation failed!" << endl;
-    // }
 
     return 0;
 }
