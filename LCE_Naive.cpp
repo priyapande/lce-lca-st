@@ -25,7 +25,7 @@ int LCE(string &input, int i, int j) {
 
 int main() {
     #ifndef LOCAL_TESTING
-        freopen("proteins.txt", "r", stdin);
+        freopen("up2.txt", "r", stdin);
         freopen("output_naive.txt", "w", stdout);
     #endif
 
@@ -33,6 +33,8 @@ int main() {
     cin.tie(NULL);cout.tie(NULL);
 
     string input; cin >> input;
+
+    cout << "Input length : " << input.length() << endl;
 
     int Q; cin >> Q;
 
@@ -42,7 +44,13 @@ int main() {
         u -= 1;
         v -= 1;
 
+        auto start = high_resolution_clock::now();
         cout << LCE(input, u, v) << endl;
+
+        auto end = high_resolution_clock::now();
+        auto duration_lce_query = duration_cast<milliseconds>(end - start);
+
+        cout << "LCE query time O(N): " << duration_lce_query.count() << " ms" << endl;
     }
 
     return 0;

@@ -447,7 +447,7 @@ public:
 
 int main() {
     #ifndef LOCAL_TESTING
-        freopen("proteins.txt", "r", stdin);
+        freopen("t_1000000.txt", "r", stdin);
         freopen("output.txt", "w", stdout);
     #endif
 
@@ -455,6 +455,8 @@ int main() {
     cin.tie(NULL);cout.tie(NULL);
 
     string input; cin >> input;
+
+    cout << "Input length : " << input.length() << endl;
 
     SuffixTree st(input);
 

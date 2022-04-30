@@ -1,1 +1,2 @@
-3
+0
+LCE query time O(N): 0 ms
