@@ -447,7 +447,7 @@ public:
 
 int main() {
     #ifndef LOCAL_TESTING
-        freopen("in.txt", "r", stdin);
+        freopen("proteins.txt", "r", stdin);
         freopen("output.txt", "w", stdout);
     #endif
 

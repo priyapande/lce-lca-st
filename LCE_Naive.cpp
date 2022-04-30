@@ -25,7 +25,7 @@ int LCE(string &input, int i, int j) {
 
 int main() {
     #ifndef LOCAL_TESTING
-        freopen("in.txt", "r", stdin);
+        freopen("proteins.txt", "r", stdin);
         freopen("output_naive.txt", "w", stdout);
     #endif
 
