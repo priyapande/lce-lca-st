@@ -402,26 +402,19 @@ public:
     SuffixNode* LCA(SuffixNode* node1, SuffixNode* node2) { 
         if(node1 == node2) return node1;
 
-        int jumps = 0;
         for(int i = D; i >= 0; i--) {
             if(store[node1][i] != store[node2][i]) {
                 node1 = store[node1][i];
                 node2 = store[node2][i];
-                jumps += 1;
             }
         }
 
-        if(jumps == 0) {
-            node1 = store[node1][0];
-        }
-
-        return node1;
+        return store[node1][0];
     }
 
     int LCE(int i, int j) {
         SuffixNode* node1 = leafIdxMap[i], *node2 = leafIdxMap[j];
         SuffixNode* toLiftNode = NULL, *otherNode = NULL;
-
 
         if(nodeLevelMap[node1] > nodeLevelMap[node2]) {
             toLiftNode = node1;
@@ -447,7 +440,7 @@ public:
 
 int main() {
     #ifndef LOCAL_TESTING
-        freopen("t_1000000.txt", "r", stdin);
+        freopen("in.txt", "r", stdin);
         freopen("output.txt", "w", stdout);
     #endif
 
@@ -467,7 +460,7 @@ int main() {
     auto end = high_resolution_clock::now();
     auto duration_build_suffix_tree = duration_cast<milliseconds>(end - start);
 
-    cout << "Suffix tree construction time O(N): " << duration_build_suffix_tree.count() << " ms" << endl;
+    // cout << "Suffix tree construction time O(N): " << duration_build_suffix_tree.count() << " ms" << endl;
 
     start = high_resolution_clock::now();
     st.preprocessLCA();
@@ -475,7 +468,7 @@ int main() {
     end = high_resolution_clock::now();
     auto duration_lca_preprocessing = duration_cast<milliseconds>(end - start);
 
-    cout << "LCA pre-processing time O(NlogN): " << duration_lca_preprocessing.count() << " ms" << endl;
+    // cout << "LCA pre-processing time O(NlogN): " << duration_lca_preprocessing.count() << " ms" << endl;
 
     
     int Q; cin >> Q;
@@ -488,22 +481,23 @@ int main() {
 
         start = high_resolution_clock::now();
 
-        cout << st.LCE(u, v) << endl;
+        cout << st.LCE(u, v) << " " << input.substr(u, 5) << " " << input.substr(v, 5) << endl;
 
         end = high_resolution_clock::now();
         auto duration_lce_query = duration_cast<milliseconds>(end - start);
 
-        cout << "LCE query time O(logN): " << duration_lce_query.count() << " ms" << endl;
+        // cout << "LCE query time O(logN): " << duration_lce_query.count() << " ms" << endl;
 
     }
 
+    // st.dfs();
 
-    // if(st.validateSuffixTree()) {
-    //     cout << input << " - Validated!" << endl;
-    // }
-    // else {
-    //     cout << input << " Validation failed!" << endl;
-    // }
+    if(st.validateSuffixTree()) {
+        cout << input << " - Validated!" << endl;
+    }
+    else {
+        cout << input << " Validation failed!" << endl;
+    }
 
     return 0;
 }

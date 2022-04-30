@@ -1,5 +1,4 @@
-Input length : 1000000
-Suffix tree construction time O(N): 2829 ms
-LCA pre-processing time O(NlogN): 12453 ms
-1
-LCE query time O(logN): 0 ms
+Input length : 9
+3 3
+3 baaab baabb
+baaabaabb - Validated!

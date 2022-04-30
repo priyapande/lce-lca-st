@@ -22,10 +22,10 @@ int LCE(string &input, int i, int j) {
     return matches;
 }
 
-
+// 131072
 int main() {
     #ifndef LOCAL_TESTING
-        freopen("up2.txt", "r", stdin);
+        freopen("test.txt", "r", stdin);
         freopen("output_naive.txt", "w", stdout);
     #endif
 
@@ -45,12 +45,12 @@ int main() {
         v -= 1;
 
         auto start = high_resolution_clock::now();
-        cout << LCE(input, u, v) << endl;
+        cout << LCE(input, u, v) << " " << input.substr(u, 5) << " " << input.substr(v, 5) << endl;
 
         auto end = high_resolution_clock::now();
         auto duration_lce_query = duration_cast<milliseconds>(end - start);
 
-        cout << "LCE query time O(N): " << duration_lce_query.count() << " ms" << endl;
+        // cout << "LCE query time O(N): " << duration_lce_query.count() << " ms" << endl;
     }
 
     return 0;
