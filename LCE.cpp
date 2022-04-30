@@ -3,6 +3,7 @@
 */
 #include <bits/stdc++.h>
 using namespace std;
+using namespace std::chrono;
 
 const char EOP_CHAR = '#'; // End of path character
 int MAX_D = INT_MIN;
@@ -457,15 +458,23 @@ int main() {
 
     SuffixTree st(input);
 
+    auto start = high_resolution_clock::now();
+
     st.buildTree();
+
+    auto end = high_resolution_clock::now();
+    auto duration_build_suffix_tree = duration_cast<milliseconds>(end - start);
+
+    cout << "Suffix tree construction time O(N): " << duration_build_suffix_tree.count() << " ms" << endl;
+
+    start = high_resolution_clock::now();
     st.preprocessLCA();
 
-    // if(st.validateSuffixTree()) {
-    //     cout << input << " - Validated!" << endl;
-    // }
-    // else {
-    //     cout << input << " Validation failed!" << endl;
-    // }
+    end = high_resolution_clock::now();
+    auto duration_lca_preprocessing = duration_cast<milliseconds>(end - start);
+
+    cout << "LCA pre-processing time O(NlogN): " << duration_lca_preprocessing.count() << " ms" << endl;
+
     
     int Q; cin >> Q;
 
@@ -475,8 +484,24 @@ int main() {
         u -= 1;
         v -= 1;
 
+        start = high_resolution_clock::now();
+
         cout << st.LCE(u, v) << endl;
+
+        end = high_resolution_clock::now();
+        auto duration_lce_query = duration_cast<milliseconds>(end - start);
+
+        cout << "LCE query time O(logN): " << duration_lce_query.count() << " ms" << endl;
+
     }
+
+
+    // if(st.validateSuffixTree()) {
+    //     cout << input << " - Validated!" << endl;
+    // }
+    // else {
+    //     cout << input << " Validation failed!" << endl;
+    // }
 
     return 0;
 }

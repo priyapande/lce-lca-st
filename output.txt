@@ -1,1 +1,4 @@
+Suffix tree construction time O(N): 0 ms
+LCA pre-processing time O(NlogN): 0 ms
 3
+LCE query time O(logN): 0 ms
