@@ -22,21 +22,23 @@ int LCE(string &input, int i, int j) {
     return matches;
 }
 
-// 131072
-int main() {
+
+int main(int argc, char** argv) {
     #ifndef LOCAL_TESTING
-        freopen("test.txt", "r", stdin);
-        freopen("output_naive.txt", "w", stdout);
+        freopen(argv[1], "r", stdin);
+        freopen(argv[2], "w", stdout);
     #endif
 
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);cout.tie(NULL);
 
     string input; cin >> input;
-
-    cout << "Input length : " << input.length() << endl;
+    int N = input.length();
 
     int Q; cin >> Q;
+
+    auto start = high_resolution_clock::now();
+    auto start_t = start;
 
     for(int i = 1; i <= Q; i++) {
         int u, v; cin >> u >> v;
@@ -44,14 +46,18 @@ int main() {
         u -= 1;
         v -= 1;
 
-        auto start = high_resolution_clock::now();
-        cout << LCE(input, u, v) << " " << input.substr(u, 5) << " " << input.substr(v, 5) << endl;
+        LCE(input, u, v);
 
-        auto end = high_resolution_clock::now();
-        auto duration_lce_query = duration_cast<milliseconds>(end - start);
-
-        // cout << "LCE query time O(N): " << duration_lce_query.count() << " ms" << endl;
+        // cout << LCE(input, u, v) << endl;
     }
+
+    auto end = high_resolution_clock::now();
+    auto duration_lce_query = duration_cast<milliseconds>(end - start);
+
+    cout << "Q = " << Q << " N = " << N << " LCE query time O(Q * N): " << duration_lce_query.count() << " ms" << endl;
+
+    auto duration_total = duration_cast<milliseconds>(end - start_t);
+    cout << "Total time O(Q * N) : " << duration_total.count() << " ms" << endl;
 
     return 0;
 }
