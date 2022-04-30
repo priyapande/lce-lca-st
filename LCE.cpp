@@ -457,17 +457,17 @@ int main(int argc, char** argv) {
     st.buildTree();
 
     auto end = high_resolution_clock::now();
-    auto duration_build_suffix_tree = duration_cast<milliseconds>(end - start);
+    auto duration_build_suffix_tree = duration_cast<microseconds>(end - start);
 
-    cout << "Suffix tree construction time O(N): " << duration_build_suffix_tree.count() << " ms" << endl;
+    cout << "Suffix tree construction time O(N): " << duration_build_suffix_tree.count() << " microseconds" << endl;
 
     start = high_resolution_clock::now();
     st.preprocessLCA();
 
     end = high_resolution_clock::now();
-    auto duration_lca_preprocessing = duration_cast<milliseconds>(end - start);
+    auto duration_lca_preprocessing = duration_cast<microseconds>(end - start);
 
-    cout << "LCA pre-processing time O(NlogN): " << duration_lca_preprocessing.count() << " ms" << endl;
+    cout << "LCA pre-processing time O(NlogN): " << duration_lca_preprocessing.count() << " microseconds" << endl;
 
     
     int Q; cin >> Q;
@@ -486,11 +486,11 @@ int main(int argc, char** argv) {
     }
 
     end = high_resolution_clock::now();
-    auto duration_lce_query = duration_cast<milliseconds>(end - start);
-    cout << "Q = " << Q << " N = " << N << " LCE query time O(Q * logN): " << duration_lce_query.count() << " ms" << endl;
+    auto duration_lce_query = duration_cast<microseconds>(end - start);
+    cout << "Q = " << Q << " N = " << N << " LCE query time O(Q * logN): " << duration_lce_query.count() << " microseconds" << endl;
 
-    auto duration_total = duration_cast<milliseconds>(end - start_t);
-    cout << "Total time O(N + NlogN + QlogN) : " << duration_total.count() << " ms" << endl;
+    auto duration_total = duration_cast<microseconds>(end - start_t);
+    cout << "Total time O(N + NlogN + QlogN) : " << duration_total.count() << " microseconds" << endl;
 
     // st.dfs();
 

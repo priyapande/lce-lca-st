@@ -52,12 +52,12 @@ int main(int argc, char** argv) {
     }
 
     auto end = high_resolution_clock::now();
-    auto duration_lce_query = duration_cast<milliseconds>(end - start);
+    auto duration_lce_query = duration_cast<microseconds>(end - start);
 
-    cout << "Q = " << Q << " N = " << N << " LCE query time O(Q * N): " << duration_lce_query.count() << " ms" << endl;
+    cout << "Q = " << Q << " N = " << N << " LCE query time O(Q * N): " << duration_lce_query.count() << " microseconds" << endl;
 
-    auto duration_total = duration_cast<milliseconds>(end - start_t);
-    cout << "Total time O(Q * N) : " << duration_total.count() << " ms" << endl;
+    auto duration_total = duration_cast<microseconds>(end - start_t);
+    cout << "Total time O(Q * N) : " << duration_total.count() << " microseconds" << endl;
 
     return 0;
 }
