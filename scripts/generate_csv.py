@@ -4,11 +4,11 @@ import pandas as pd
 
 
 def main():
-    pattern_size = [10, 100, 1000, 10000]
+    pattern_size = [10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000]
     test_files = []
     test_files_op = []
-    df = pd.DataFrame(columns=["queries", "size", "exec_time"])
-    df2 = pd.DataFrame(columns=["ST_construction_time", "LCA_Preprocess", "queries", "size", "exec_time"])
+    df = pd.DataFrame(columns=["alphabet_size", "queries", "size", "exec_time"])
+    df2 = pd.DataFrame(columns=["ST_construction_time", "LCA_Preprocess", "alphabet_size", "queries", "size", "exec_time"])
 
     for pattern in pattern_size:
         test_dir_naive = "/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/outputs/naive/" + str(pattern)
@@ -38,8 +38,8 @@ def main():
         s.extend(s_1)
         df2.loc[len(df2.index)-1] = s
 
-    df.to_csv("/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/naive_op.csv")
-    df2.to_csv("/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/lca_op.csv")
+    df.to_csv("/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/scripts/naive_op.csv")
+    df2.to_csv("/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/scripts/lca_op.csv")
 
 
 if __name__ == "__main__":
