@@ -32,7 +32,7 @@ int get_alphabet_size(string filename) {
             occ += 1;
         }
         
-        else if(occ == 2) {
+        else if(occ == 3) {
             alphabet_size += filename[i];
         }
         
@@ -44,7 +44,7 @@ int get_alphabet_size(string filename) {
 
 
 int main(int argc, char** argv) {
-    int ALPHABET_SIZE = get_alphabet_size(string(ch));
+    int ALPHABET_SIZE = get_alphabet_size(string(argv[1]));
 
     #ifndef LOCAL_TESTING
         freopen(argv[1], "r", stdin);
@@ -80,7 +80,7 @@ int main(int argc, char** argv) {
         // cout << LCE(input, u, v) << endl;
     }
 
-    cout "ALPHABET_SIZE = " << ALPHABET_SIZE << "Q = " << Q << " N = " << N << " | LCE query time O(Q * N) = " << Qt << " microseconds" << endl;
+    cout << "ALPHABET_SIZE = " << ALPHABET_SIZE << " Q = " << Q << " N = " << N << " | LCE query time O(Q * N) = " << Qt << " microseconds" << endl;
 
     // auto duration_total = duration_cast<microseconds>(high_resolution_clock::now() - start_t);
     // cout << "Total time O(Q * N) = " << duration_total.count() << " microseconds" << endl;
