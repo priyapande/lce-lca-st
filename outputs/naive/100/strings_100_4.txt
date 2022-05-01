@@ -1,0 +1,1 @@
+ALPHABET_SIZE = 4 Q = 100 N = 100 | LCE query time O(Q * N) = 0 microseconds

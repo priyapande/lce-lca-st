@@ -1,0 +1,3 @@
+Suffix tree construction time O(N) = 291112 microseconds
+LCA pre-processing time O(NlogN) = 1273327 microseconds
+ALPHABET_SIZE = 4 Q = 100000 N = 100000 | LCE query time O(Q * logN) = 625024 microseconds
