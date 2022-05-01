@@ -21,25 +21,38 @@ def main():
                 test_files_op.append(dir_path + '/' + name)
 
     for file in test_files:
-        inp = open(file, 'r')
-        sentences = inp.readlines()
-        s = [int(s) for s in re.findall(r'-?\d+\.?\d*', sentence)]
-        df.loc[len(df.index)-1] = s
+        my_lines = []
+        with open(file, 'r') as my_file:
+            for line in my_file:
+                my_lines.append(line.rstrip('\n'))
+        s = []
+        temp = file.split('_')
+        t2 = temp[-1].split('.')
+        s.extend([t2[0], temp[-2]])
+        for line in my_lines:
+            if line.find("total heap usage") != -1:
+                w = [int(s) for s in re.findall(r'-?\d+\.?\d*', line)]
+                t = str(w[-2]) + str(w[-1])
+                s.extend([t])
+                df.loc[len(df.index)-1] = s
 
     for file in test_files_op:
-        inp = open(file, 'r')
-        sentence = inp.readline()
-        s1 = inp.readline()
-        s2 = inp.readline()
-        s = [int(s) for s in re.findall(r'-?\d+\.?\d*', sentence)]
-        s_1 = ([int(s) for s in re.findall(r'-?\d+\.?\d*', s1)])
-        s.extend(s_1)
-        s_1 = ([int(s) for s in re.findall(r'-?\d+\.?\d*', s2)])
-        s.extend(s_1)
-        df2.loc[len(df2.index)-1] = s
-
-    df.to_csv("/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/scripts/naive_op.csv")
-    df2.to_csv("/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/scripts/lca_op.csv")
+        my_lines = []
+        with open(file, 'r') as my_file:
+            for line in my_file:
+                my_lines.append(line.rstrip('\n'))
+        s = []
+        temp = file.split('_')
+        t2 = temp[-1].split('.')
+        s.extend([t2[0], temp[-2]])
+        for line in my_lines:
+            if line.find("total heap usage") != -1:
+                w = [int(s) for s in re.findall(r'-?\d+\.?\d*', line)]
+                t = str(w[-2]) + str(w[-1])
+                s.extend([t])
+                df2.loc[len(df2.index)-1] = s
+    df.to_csv("/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/scripts/naive_op_mem.csv")
+    df2.to_csv("/Users/priya/Documents/Spring 2022/Comp Bio/lce-lca-st/scripts/lca_op_mem.csv")
 
 
 if __name__ == "__main__":
