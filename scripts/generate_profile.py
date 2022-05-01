@@ -5,8 +5,8 @@ naive_code_cmd = 'g++ LCE_Naive.cpp --std=c++17'
 suffix_tree_code_cmd = 'g++ LCE.cpp --std=c++17'
 
 
-# pattern_size = [10, 100, 1000, 10000, 100000, 1000000, 10000000, 10000000, 1000000000]
-pattern_size = [10, 100, 1000, 10000]
+# pattern_size = [10, 100, 1000, 10000, 100000, 1000000, 10000000, 10000000]
+pattern_size = [10]
 
 for pattern in pattern_size:
     test_dir = "/Users/gaganganapathyas/Spring 22 - SBU/CSE 549 - BIO/Project/tests/Tests_" + str(pattern)

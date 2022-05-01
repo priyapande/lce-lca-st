@@ -17,8 +17,35 @@ int LCE(string &input, int i, int j) {
     return matches;
 }
 
+int get_alphabet_size(string filename) {
+    int n = filename.length();
+    int occ = 0;
+    string alphabet_size = "";
+    
+    for(int i = 0; i < n; i++) {
+    	
+        if(filename[i] == '.') {
+            break;
+        }
+        
+        if(filename[i] == '_') {
+            occ += 1;
+        }
+        
+        else if(occ == 2) {
+            alphabet_size += filename[i];
+        }
+        
+    }
+
+    return stoi(alphabet_size);
+}
+
+
 
 int main(int argc, char** argv) {
+    int ALPHABET_SIZE = get_alphabet_size(string(ch));
+
     #ifndef LOCAL_TESTING
         freopen(argv[1], "r", stdin);
         freopen(argv[2], "w", stdout);
@@ -53,7 +80,7 @@ int main(int argc, char** argv) {
         // cout << LCE(input, u, v) << endl;
     }
 
-    cout << "Q = " << Q << " N = " << N << " | LCE query time O(Q * N) = " << Qt << " microseconds" << endl;
+    cout "ALPHABET_SIZE = " << ALPHABET_SIZE << "Q = " << Q << " N = " << N << " | LCE query time O(Q * N) = " << Qt << " microseconds" << endl;
 
     // auto duration_total = duration_cast<microseconds>(high_resolution_clock::now() - start_t);
     // cout << "Total time O(Q * N) = " << duration_total.count() << " microseconds" << endl;
