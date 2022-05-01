@@ -1,0 +1,2 @@
+Q = 10000 N = 10000 | LCE query time O(Q * N) = 34678 microseconds
+Total time O(Q * N) = 34678 microseconds

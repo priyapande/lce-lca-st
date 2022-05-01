@@ -8,15 +8,10 @@ using namespace std::chrono;
 int LCE(string &input, int i, int j) {
     int matches = 0, N = input.length();
 
-    while(i < N and j < N) {
-        if(input[i] == input[j]) {
-            matches++;
-            i++;
-            j++;
-        }
-        else {
-            break;
-        }
+    while(i < N and j < N and input[i] == input[j]) {
+        matches++;
+        i++;
+        j++;
     }
 
     return matches;
@@ -36,9 +31,9 @@ int main(int argc, char** argv) {
     int N = input.length();
 
     int Q; cin >> Q;
+    int Qt = 0;
 
-    auto start = high_resolution_clock::now();
-    auto start_t = start;
+    auto start_t = high_resolution_clock::now();
 
     for(int i = 1; i <= Q; i++) {
         int u, v; cin >> u >> v;
@@ -46,18 +41,22 @@ int main(int argc, char** argv) {
         u -= 1;
         v -= 1;
 
+        auto start = high_resolution_clock::now();
+
         LCE(input, u, v);
+
+        auto end = high_resolution_clock::now();
+        auto duration_lce_query = duration_cast<microseconds>(end - start);
+
+        Qt += duration_lce_query.count();
 
         // cout << LCE(input, u, v) << endl;
     }
 
-    auto end = high_resolution_clock::now();
-    auto duration_lce_query = duration_cast<microseconds>(end - start);
+    cout << "Q = " << Q << " N = " << N << " | LCE query time O(Q * N) = " << Qt << " microseconds" << endl;
 
-    cout << "Q = " << Q << " N = " << N << " LCE query time O(Q * N): " << duration_lce_query.count() << " microseconds" << endl;
-
-    auto duration_total = duration_cast<microseconds>(end - start_t);
-    cout << "Total time O(Q * N) : " << duration_total.count() << " microseconds" << endl;
+    // auto duration_total = duration_cast<microseconds>(high_resolution_clock::now() - start_t);
+    // cout << "Total time O(Q * N) = " << duration_total.count() << " microseconds" << endl;
 
     return 0;
 }

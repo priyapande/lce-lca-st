@@ -1,5 +1,5 @@
 /*
-    Run: g++ LCE.cpp --std=c++17
+    Run: g++ LCE.cpp --std=c++17 
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -459,7 +459,7 @@ int main(int argc, char** argv) {
     auto end = high_resolution_clock::now();
     auto duration_build_suffix_tree = duration_cast<microseconds>(end - start);
 
-    cout << "Suffix tree construction time O(N): " << duration_build_suffix_tree.count() << " microseconds" << endl;
+    cout << "Suffix tree construction time O(N) = " << duration_build_suffix_tree.count() << " microseconds" << endl;
 
     start = high_resolution_clock::now();
     st.preprocessLCA();
@@ -467,10 +467,11 @@ int main(int argc, char** argv) {
     end = high_resolution_clock::now();
     auto duration_lca_preprocessing = duration_cast<microseconds>(end - start);
 
-    cout << "LCA pre-processing time O(NlogN): " << duration_lca_preprocessing.count() << " microseconds" << endl;
+    cout << "LCA pre-processing time O(NlogN) = " << duration_lca_preprocessing.count() << " microseconds" << endl;
 
     
     int Q; cin >> Q;
+    int Qt = 0;
 
     start = high_resolution_clock::now();
 
@@ -480,17 +481,22 @@ int main(int argc, char** argv) {
         u -= 1;
         v -= 1;
 
+        start = high_resolution_clock::now();
+
         st.LCE(u, v);
+
+        end = high_resolution_clock::now();
+        auto duration_lce_query = duration_cast<microseconds>(end - start);
+
+        Qt += duration_lce_query.count();
 
         // cout << st.LCE(u, v) << endl;
     }
 
-    end = high_resolution_clock::now();
-    auto duration_lce_query = duration_cast<microseconds>(end - start);
-    cout << "Q = " << Q << " N = " << N << " LCE query time O(Q * logN): " << duration_lce_query.count() << " microseconds" << endl;
+    cout << "Q = " << Q << " N = " << N << " | LCE query time O(Q * logN) = " << Qt << " microseconds" << endl;
 
-    auto duration_total = duration_cast<microseconds>(end - start_t);
-    cout << "Total time O(N + NlogN + QlogN) : " << duration_total.count() << " microseconds" << endl;
+    // auto duration_total = duration_cast<microseconds>(high_resolution_clock::now() - start_t);
+    // cout << "Total time O(N + NlogN + QlogN) = " << duration_total.count() << " microseconds" << endl;
 
     // st.dfs();
 
